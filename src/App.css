@@ -1,38 +1,152 @@
-.App {
-  text-align: center;
+body {
+  background-image: url(https://img.freepik.com/premium-vector/dotted-world-map-vector_94753-222.jpg);
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+.card-registration .select-arrow {
+  top: 13px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card-registration {
+  margin: 10px 100px 10px 180px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.custom-btn {
+  background-color: #d15555;
+  padding: 4px 0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.prevStep-btn {
+  background-color: #d15555;
+  padding: 4px 10px;
+}
+
+.custom-checkbox {
+  color: #d15555;
+  text-decoration: none;
+}
+
+.custom-bg {
+  background-image: linear-gradient(
+    0deg,
+    rgba(194.43749696016312, 80.20546540617943, 80.20546540617943, 1) 0%,
+    rgba(96.68749898672104, 22.157551534473896, 22.157551534473896, 1) 100%
+  );
+}
+.custom-padding {
+  padding: 0 100px 0 180px;
+}
+
+.custom-padding a {
+  color: #d15555;
+  text-decoration: none;
+}
+
+.mobile-text {
+  color: #989696b8;
+  font-size: 15px;
+}
+
+.form-control {
+  margin-right: 12px;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ff8880;
+  outline: 0;
+  box-shadow: none;
+}
+
+.custom-head {
+  background-color: #ffdbdb;
+  border-radius: 15px;
+  margin-top: 22px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.custom-modal {
+  border-radius: 15px;
+  margin-top: 100px;
+  margin-left: 420px;
+  width: 34%;
+}
+
+.custom-mid {
+  background-color: #f0f0f0;
+  border-radius: 15px;
+}
+
+.modal-header {
+  margin: 0;
+  padding: 0;
+  border: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  margin-left: 425px;
 }
 
-.App-link {
-  color: #61dafb;
+.close-btn {
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.custom-container {
+  padding: 50px;
+}
+
+.stepwizard-step p {
+  margin-top: 10px;
+}
+
+.stepwizard-row {
+  display: table-row;
+}
+
+.stepwizard {
+  display: table;
+  width: 97%;
+  position: relative;
+}
+
+.stepwizard-step button[disabled] {
+  opacity: 1 !important;
+  filter: alpha(opacity=100) !important;
+}
+
+.stepwizard-row:before {
+  top: 11px;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  margin-left: 42px;
+  width: 76%;
+  height: 5px;
+  background-color: #f1d3d3;
+}
+
+.stepwizard-step {
+  display: table-cell;
+  text-align: center;
+  position: relative;
+}
+.btn-circle {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+.btn-default {
+  background-color: #f1d3d3;
 }

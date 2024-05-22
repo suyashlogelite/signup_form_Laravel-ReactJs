@@ -179,6 +179,7 @@ export const Signup = () => {
   };
 
   const handleCloseModal = () => setShowModal(false);
+
   const handleShowModal = () => setShowModal(true);
 
   var thisClicked = "";
@@ -188,6 +189,8 @@ export const Signup = () => {
 
     if (email === "") {
       setRemoveClass(true);
+    } else {
+      setRemoveClass(false);
     }
 
     thisClicked = e.currentTarget;
@@ -205,6 +208,7 @@ export const Signup = () => {
       .then(function (response) {
         console.log(response.data.message);
         handleShowModal();
+        thisClicked.innerText = "Verify Email";
         setTimerRunning(true);
       })
       .catch(function (error) {
@@ -214,10 +218,9 @@ export const Signup = () => {
         setValid3(!valid3);
       });
   };
-
   const verifyOtp = (e) => {
     setResendMessage("");
-    const thisVerify = e.currentTarget;
+    var thisVerify = e.currentTarget;
     const formData = new FormData();
     const concatOtp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
     formData.append("otp", concatOtp);
@@ -256,8 +259,12 @@ export const Signup = () => {
     e.preventDefault();
   };
 
+  const flag = true;
+
   const nextStep = () => {
-    setStep(step + 1);
+    if (flag) {
+      setStep(step + 1);
+    }
   };
 
   const prevStep = () => {
@@ -265,44 +272,43 @@ export const Signup = () => {
   };
 
   return (
-    <div className="container px-5 custom-container">
-      <div className="text-center">
+    <div className="container px-5 mt-4 p-0 custom-container">
+      <div className="text-center mb-4">
         <img
           src="https://www.7searchppc.com/assets/images/logo/7searchppc-logo.png"
           alt="Logo"
         />
       </div>
       <section className="h-100">
-        <div className="container py-3 h-100">
+        <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col">
-              <div className="card shadow-lg card-registration">
+            <div className="col-10">
+              <div className="card-registration">
                 <div className="row g-0">
-                  <div className="col-xl-7 card shadow-lg">
-                    <div className="card-body text-black shadow px-4 py-4 ">
-                      <h4 className="mb-1">
-                        Begin Your Advertising Journey With
-                        <br />
-                        <span className="fw-bolder">7Search PPC</span>
-                      </h4>
+                  <div className="col-xl-7 card p-3 custom-style">
+                    <div className="card-body text-black border border-0">
+                      <h5 className="fw-normal">
+                        Begin Your Advertising Journey With <br />
+                        <span className="fw-bold h3">7Search PPC</span>
+                      </h5>
                       <div class="stepwizard col-md-offset-3 my-4">
                         <div class="stepwizard-row setup-panel">
                           <div class="stepwizard-step">
                             <a
-                              href="#step-1"
+                              href="#step1"
                               type="button"
                               className={`btn ${
-                                step == 2 ? "btn-success" : "btn-danger"
+                                step == 1 ? "btn-danger" : "btn-default"
                               } btn-circle`}
                             ></a>
                             <p className="text-danger fw-normal">Verify</p>
                           </div>
                           <div class="stepwizard-step">
                             <a
-                              href="#step-2"
+                              href="#step2"
                               type="button"
                               className={`btn ${
-                                step == 3 ? "btn-success" : "btn-default"
+                                step == 2 ? "btn-danger" : "btn-default"
                               } btn-circle`}
                             ></a>
                             <p className="text-danger fw-normal">
@@ -311,11 +317,13 @@ export const Signup = () => {
                           </div>
                           <div class="stepwizard-step">
                             <a
-                              href="#step-3"
+                              href="#step3"
                               type="button"
-                              class="btn btn-default btn-circle"
+                              className={`btn ${
+                                step == 3 ? "btn-danger" : "btn-default"
+                              } btn-circle`}
                               disabled="disabled"
-                            ></a>
+                            />
                             <p className="text-danger fw-normal">Password</p>
                           </div>
                         </div>
@@ -324,6 +332,7 @@ export const Signup = () => {
                         <form onSubmit={nextStep}>
                           <div className="form-outline">
                             <input
+                              autoComplete="off"
                               type="text"
                               id="fname"
                               maxLength={20}
@@ -347,6 +356,7 @@ export const Signup = () => {
                           </div>
                           <div className="form-outline">
                             <input
+                              autoComplete="off"
                               type="text"
                               maxLength={20}
                               name="last_name"
@@ -371,6 +381,7 @@ export const Signup = () => {
                           <div className="form-outline">
                             <div className="input-group">
                               <input
+                                autoComplete="off"
                                 type="text"
                                 placeholder="Your Email*"
                                 onKeyUp={keyUp3}
@@ -385,19 +396,21 @@ export const Signup = () => {
                               />
                               {emailVerified && (
                                 <Button className="input-group-text btn btn-success btn-sm border border-0 fw-bold">
-                                  <i class="me-2 fas fa-xl fa-check text-white fw-bold"></i>
-                                  Verified
+                                  <div>
+                                    <i className="me-2 fas fa-xl fad fa-check-circle" />
+                                    Verified
+                                  </div>
                                 </Button>
                               )}
                             </div>
-                            <span className="text-danger fw-normal errorInput">
+                            <span className="text-danger ms-2 fw-normal errorInput">
                               {emailError
                                 ? "The email field must be a valid email address"
                                 : emailEmpty
                                 ? "The Email field is required"
                                 : ""}
                             </span>
-                            <span className="ms-1 text-danger fw-normal errorInput">
+                            <span className="m-0 text-success fw-normal errorInput">
                               {valid3 ? "" : inputErrors.email}
                             </span>
                             {removeClass ? (
@@ -407,12 +420,12 @@ export const Signup = () => {
                             ) : (
                               <span className="text-danger fw-normal errorInput"></span>
                             )}
-                            <div className="d-flex justify-content-end pt-2 mt-3">
+                            <div className="d-flex justify-content-end pb-4 mt-3">
                               {!emailVerified && (
                                 <Button
                                   variant="danger"
                                   onClick={sendEmail}
-                                  className="ms-2 custom-btn form-control fw-bold"
+                                  className="ms-2 custom-btn form-control fw-normal p-2 custom-border"
                                 >
                                   Verify Email
                                 </Button>
@@ -438,7 +451,6 @@ export const Signup = () => {
                             placeholder="Phone Number"
                             className="form-control"
                             maxLength={10}
-                            minLength={10}
                           />
                           <br />
                           <select class="form-select">
@@ -465,7 +477,6 @@ export const Signup = () => {
                           </div>
                         </form>
                       )}
-
                       {step === 3 && (
                         <form onSubmit={nextStep}>
                           <input
@@ -501,7 +512,7 @@ export const Signup = () => {
                               htmlFor="defaultCheck1"
                             >
                               I agree to
-                              <a href="" className="custom-checkbox">
+                              <a href="" className="custom-checkbox ms-1 me-1">
                                 Terms
                               </a>
                               and
@@ -530,29 +541,29 @@ export const Signup = () => {
                       )}
                     </div>
                   </div>
-                  <div className="col-xl-5 card p-4 custom-bg">
-                    <h5 className="text-white">
+                  <div className="col-xl-5 p-4 custom-bg">
+                    <h6 className="text-white fw-bold pb-4">
                       Register Now to Unlock A Range of Advertising Benefits!
-                    </h5>
-                    <p className="text-white">
+                    </h6>
+                    <p className="text-white custom-para">
                       7Search PPC might be your gateway to success and a
                       one-stop solution for all your business advertising needs.
                       Whether you are a small enterprise or a big business
                       giant, we have the potential to boost your revenue
                       tremendously.
                     </p>
-                    <p className="text-white">
-                      Begin your advertising journey with just{" "}
+                    <p className="text-white custom-para">
+                      Begin your advertising journey with just
                       <span className="text-warning fw-bold">$50</span> at
                       7Search PPC by filling in the required details and
                       submitting today!
                     </p>
-                    <p className="text-white">
+                    <p className="text-white custom-para">
                       Please ensure that your website complies with all our
-                      advertising{" "}
+                      advertising
                       <span className="text-warning fw-bold">
                         Terms and Policies
-                      </span>{" "}
+                      </span>
                       to promote your business effectively.
                     </p>
                   </div>
@@ -561,12 +572,16 @@ export const Signup = () => {
               <div className="custom-padding mt-4">
                 <p className="text-end fw-bold">
                   Already have an account?
-                  <a href="$" style={{ padding: "10px 7px" }}>
+                  <a
+                    href="https://advertiser.7searchppc.in/auth-login"
+                    style={{ padding: "10px 7px" }}
+                    target="_blank"
+                  >
                     Advertiser
                   </a>
                   <span className="pnonel"> | </span>
                   <a
-                    href="$"
+                    href="https://publisher.7searchppc.in/auth-login"
                     className
                     style={{ padding: "10px 7px" }}
                     target="_blank"
@@ -584,6 +599,8 @@ export const Signup = () => {
           show={showModal}
           onHide={handleCloseModal}
           className="custom-modal"
+          backdrop="static"
+          keyboard="false"
         >
           <form action="" method="POST" name="verify">
             <div className="modal-header">

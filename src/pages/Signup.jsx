@@ -144,7 +144,9 @@ export const Signup = () => {
       setlnameEmpty(true);
       setlnameError(false);
     }
+
     const value2 = document.getElementById("lname");
+    
     setInterval(() => {
       value2.value = value2.value.trim();
     }, 100);

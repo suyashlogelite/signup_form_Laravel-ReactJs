@@ -277,7 +277,7 @@ export const Signup = () => {
     <div className="container px-5 mt-4 p-0 custom-container">
       <div className="text-center mb-4">
         <img
-          src="https://www.7searchppc.com/assets/images/logo/7searchppc-logo.png"
+          src="https://www.7searchppc.com/register/assets/logo.png"
           alt="Logo"
         />
       </div>
@@ -578,6 +578,7 @@ export const Signup = () => {
                     href="https://advertiser.7searchppc.in/auth-login"
                     style={{ padding: "10px 7px" }}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Advertiser
                   </a>
@@ -587,6 +588,7 @@ export const Signup = () => {
                     className
                     style={{ padding: "10px 7px" }}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Publisher
                   </a>
